@@ -8,6 +8,7 @@
     using Hopper.Data.Models;
     using Hopper.Data.Repositories;
     using Hopper.Data.Seeding;
+    using Hopper.Services.Data.IndexService;
     using Hopper.Services.Mapping;
     using Hopper.Services.Messaging;
     using Hopper.Web.ViewModels;
@@ -63,6 +64,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IGetCountService, GetCountService>();
         }
 
         private static void Configure(WebApplication app)

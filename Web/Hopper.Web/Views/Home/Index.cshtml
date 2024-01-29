@@ -1,9 +1,14 @@
-﻿@using Hopper.Common
+﻿@model IndexViewModel;
+@using Hopper.Common
+@using Hopper.Web.ViewModels.Home
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <ul>
+        <li class="list-group-item">All:@Model.AllPractices</li>
+        <li class="list-group-item">FootballPractices:@Model.FootballPractices</li>
+        <li class="list-group-item">BasketBallPractices:@Model.BasketballPractices</li>
+    </ul>
 </div>

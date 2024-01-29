@@ -3,14 +3,16 @@
     using System.Diagnostics;
 
     using Hopper.Web.ViewModels;
-
+    using Hopper.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new IndexViewModel();
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()
