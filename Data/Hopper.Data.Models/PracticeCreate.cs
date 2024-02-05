@@ -1,5 +1,7 @@
 ﻿namespace Hopper.Data.Models
 {
+    using System;
+
     using Hopper.Data.Common.Models;
 
     public class PracticeCreate : BaseDeletableModel<int>
@@ -8,9 +10,9 @@
 
         public string Location { get; set; }
 
-        public int Time { get; set; }
+        public TimeOnly Time { get; set; }
 
-        public int Date { get; set; }
+        public DateOnly Date { get; set; }
 
         public string Description { get; set; }
 
