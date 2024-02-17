@@ -4,6 +4,7 @@ using Hopper.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hopper.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240205162938_DateAndTimeChange")]
+    partial class DateAndTimeChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,7 +183,7 @@ namespace Hopper.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("SportNameId")
+                    b.Property<int?>("SportNamesId")
                         .HasColumnType("int");
 
                     b.Property<string>("TeamName")
@@ -193,7 +196,7 @@ namespace Hopper.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("SportNameId");
+                    b.HasIndex("SportNamesId");
 
                     b.ToTable("Practices");
                 });
@@ -328,11 +331,11 @@ namespace Hopper.Data.Migrations
 
             modelBuilder.Entity("Hopper.Data.Models.PracticeCreate", b =>
                 {
-                    b.HasOne("Hopper.Data.Models.Sports", "SportName")
-                        .WithMany("Practices")
-                        .HasForeignKey("SportNameId");
+                    b.HasOne("Hopper.Data.Models.Sports", "SportNames")
+                        .WithMany()
+                        .HasForeignKey("SportNamesId");
 
-                    b.Navigation("SportName");
+                    b.Navigation("SportNames");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -393,11 +396,6 @@ namespace Hopper.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
-                });
-
-            modelBuilder.Entity("Hopper.Data.Models.Sports", b =>
-                {
-                    b.Navigation("Practices");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,18 +1,18 @@
 ﻿namespace Hopper.Data.Models
 {
     using System;
-
+    using System.Collections.Generic;
     using Hopper.Data.Common.Models;
 
     public class PracticeCreate : BaseDeletableModel<int>
     {
-        public Sports SportNames { get; set; }
+        public Sports SportName { get; set; }
 
         public string Location { get; set; }
 
-        public TimeOnly Time { get; set; }
+        public DateTime Time { get; set; }
 
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string Description { get; set; }
 

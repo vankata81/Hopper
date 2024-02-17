@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hopper.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240205142313_DateAndTimeChange")]
-    partial class DateAndTimeChange
+    [Migration("20240210185847_Changes")]
+    partial class Changes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -145,6 +145,84 @@ namespace Hopper.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("Hopper.Data.Models.PracticeCreate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PeopleNeeded")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("SportNameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SportNameId");
+
+                    b.ToTable("Practices");
+                });
+
+            modelBuilder.Entity("Hopper.Data.Models.Sports", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sports");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -251,6 +329,15 @@ namespace Hopper.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Hopper.Data.Models.PracticeCreate", b =>
+                {
+                    b.HasOne("Hopper.Data.Models.Sports", "SportName")
+                        .WithMany("Practices")
+                        .HasForeignKey("SportNameId");
+
+                    b.Navigation("SportName");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Hopper.Data.Models.ApplicationRole", null)
@@ -309,6 +396,11 @@ namespace Hopper.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("Hopper.Data.Models.Sports", b =>
+                {
+                    b.Navigation("Practices");
                 });
 #pragma warning restore 612, 618
         }
