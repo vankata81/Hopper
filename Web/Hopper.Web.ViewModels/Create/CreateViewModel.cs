@@ -6,8 +6,6 @@
 
     public class CreateViewModel
     {
-        public IEnumerable<KeyValuePair<string, string>> AllSports { get; set; }
-
         [Required]
         public string Location { get; set; }
 
@@ -26,5 +24,10 @@
         public int PhoneNumber { get; set; }
 
         public decimal Price { get; set; }
+
+        [Required]
+        public int AllSportsId { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> AllSports { get; set; }
     }
 }

@@ -2,10 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
+
     using Hopper.Data.Common.Models;
 
     public class PracticeCreate : BaseDeletableModel<int>
     {
+        public int SportNameId { get; set; }
+
         public Sports SportName { get; set; }
 
         public string Location { get; set; }

@@ -1,10 +1,11 @@
 ﻿namespace Hopper.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using Hopper.Services.Data.CreateService;
     using Hopper.Services.Data.SportService;
     using Hopper.Web.ViewModels.Create;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
 
     public class CreateController : Controller
     {

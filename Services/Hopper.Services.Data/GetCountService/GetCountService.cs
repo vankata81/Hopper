@@ -20,6 +20,7 @@
             var data = new IndexViewModel
             {
                 AllPractices = this.practiceRepository.All().Count(),
+                BasketballPractices = this.practiceRepository.All().Select(x => x.SportName.ToString() == "Basketball").Count(),
             };
 
             return data;

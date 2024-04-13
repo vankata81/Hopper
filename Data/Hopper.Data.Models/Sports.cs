@@ -6,8 +6,13 @@
 
     public class Sports : BaseModel<int>
     {
+        public Sports()
+        {
+            this.Practices = new HashSet<PracticeCreate>();
+        }
+
         public string Name { get; set; }
 
-        public ICollection<PracticeCreate> Practices { get; set; }
+        public virtual ICollection<PracticeCreate> Practices { get; set; }
     }
 }

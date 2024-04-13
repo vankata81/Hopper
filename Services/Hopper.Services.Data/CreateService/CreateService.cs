@@ -22,13 +22,15 @@
 
         public async Task CreateAsync(CreateViewModel viewModel)
         {
-
             var practice = new PracticeCreate
             {
+                SportNameId = viewModel.AllSportsId,
+                Location = viewModel.Location,
                 Description = viewModel.Description,
                 PhoneNumber = viewModel.PhoneNumber,
                 Price = viewModel.Price,
                 Time = viewModel.Time,
+                PeopleNeeded = viewModel.PeopleNeeded,
                 Date = viewModel.Date,
             };
             await this.practiceRepository.AddAsync(practice);

@@ -1,7 +1,8 @@
 ﻿namespace Hopper.Services.Data.CreateService
 {
-    using Hopper.Web.ViewModels.Create;
     using System.Threading.Tasks;
+
+    using Hopper.Web.ViewModels.Create;
 
     public interface ICreateService
     {
