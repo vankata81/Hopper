@@ -1,24 +1,22 @@
-﻿namespace Hopper.Data.Models
+﻿namespace Hopper.Web.ViewModels.Create
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
-    using Hopper.Data.Common.Models;
-
-    public class PracticeCreate : BaseDeletableModel<int>
+    public class CreateViewModel
     {
-        public int SportNameId { get; set; }
-
-        public Sports SportName { get; set; }
-
+        [Required]
         public string Location { get; set; }
 
         public DateTime Time { get; set; }
 
         public DateTime Date { get; set; }
 
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public int PeopleNeeded { get; set; }
 
         public string TeamName { get; set; }
@@ -26,5 +24,10 @@
         public int PhoneNumber { get; set; }
 
         public decimal Price { get; set; }
+
+        [Required]
+        public int AllSportsId { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> AllSports { get; set; }
     }
 }

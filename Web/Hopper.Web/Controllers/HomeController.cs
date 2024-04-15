@@ -2,15 +2,25 @@
 {
     using System.Diagnostics;
 
+    using Hopper.Services.Data.IndexService;
     using Hopper.Web.ViewModels;
-
+    using Hopper.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly IGetCountService countService;
+
+        public HomeController(IGetCountService countService)
+        {
+            this.countService = countService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = this.countService.GetCounts();
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

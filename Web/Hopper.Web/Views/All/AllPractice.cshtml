@@ -1,0 +1,55 @@
+﻿@using Hopper.Web.ViewModels.PracticeListViewModel
+@model PracticeListViewModel;
+@{
+    this.ViewData["Title"] = "All Practices";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    @foreach (var practice in this.Model.Practices)
+    {
+        <div class="media ">
+            <div class="media-body">
+                <h5 class="mt-0">@practice.Description</h5>
+                <h5 class="mt-0">@practice.SportName</h5>
+                <p> @practice.Date.Date.ToString("yyyy-MM-dd") @practice.Date.DayOfWeek</p>
+                <p> @practice.Time.TimeOfDay</p>
+                <p> @practice.Description</p>
+            </div>
+            <hr />
+        </div>
+    }
+</div>
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @if(!Model.HasPrevPage) {<text>disabled</text>}">
+            <a class="page-link" asp-action="AllPractice" asp-route-id="@Model.PreviousPageNumber">Previous</a>
+        </li>
+        @for (int i = Model.PageNumber - 3; i < Model.PageNumber; i++)
+        {
+            if (i>0)
+            {
+                <li class="page-item"><a class="page-link" asp-action="AllPractice" asp-route-id="@i">@i</a></li>
+            }
+        }
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                @Model.PageNumber
+                <span class="sr-only"></span>
+            </span>
+        </li>
+        @for (int i = Model.PageNumber + 1; i < Model.PageNumber + 3; i++)
+        {
+            if (i <= Model.PagesCount)
+            {
+                <li class="page-item"><a class="page-link" asp-action="AllPractice" asp-route-id="@i">@i</a></li>
+            }
+        }        
+        <li class="page-item @if(!Model.HasNextPage) {<text>disabled</text>}">
+            <a class="page-link" asp-action="AllPractice" asp-route-id="@Model.NextPageNumber">Next</a>
+        </li>
+    </ul>
+</nav>

@@ -19,6 +19,10 @@
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
 
+        public DbSet<PracticeCreate> Practices { get; set; }
+
+        public DbSet<Sports> Sports { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

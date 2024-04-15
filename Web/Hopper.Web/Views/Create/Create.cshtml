@@ -1,0 +1,43 @@
+﻿@using Hopper.Web.ViewModels.Create
+@model CreateViewModel
+@{
+    this.ViewData["Title"] = "Create";
+    var sports = this.Model.AllSports.Select(x => new SelectListItem(x.Value, x.Key));
+}
+<form method="post">
+    <div class="form-group mb-3">
+        <label asp-for="AllSports"></label>
+        <select class="form-control" asp-for="AllSportsId" asp-items="sports"></select>
+        <span asp-validation-for="AllSportsId"></span>
+    </div>
+    <div class="form-group  mb-3">
+        <span asp-validation-for="Location" class="form-control-text">Location</span>
+        <input asp-for="Location" type="text" class="form-control">
+    </div>
+    <div class="form-group  mb-3">
+        <span asp-validation-for="Date" class="form-controll">Date</span>
+        <input asp-for="Date" type="date" class="form-control">
+    </div>
+    <div class="form-group mb-3">
+        <span asp-validation-for="Time" class="form-controll">Time</span>
+        <input asp-for="Time" type="time" class="form-control">
+    </div>
+    <div class="form-group  mb-3">
+        <span asp-validation-for="Description" class="form-control-text">Description</span>
+        <textarea input asp-for="Description" type="text" class="form-control" style="height: 130px"></textarea>
+    </div>
+    <div class="form-group  mb-3">
+        <span asp-validation-for="PeopleNeeded" class="form-controll">PeopleNeeded</span>
+        <input asp-for="PeopleNeeded" type="number" class="form-control">
+    </div>
+    <div class="form-group  mb-3">
+        <span asp-validation-for="PhoneNumber" class="form-controll">PhoneNumber</span>
+        <input asp-for="PhoneNumber" type="text" class="form-control">
+    </div>
+    <div class="form-group mb-3">
+        <span asp-validation-for="Price" class="form-controll">Price</span>
+        <input asp-for="Price" type="number" class="form-control">
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</form>
