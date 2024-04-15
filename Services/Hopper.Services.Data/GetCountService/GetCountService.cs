@@ -21,6 +21,7 @@
             {
                 AllPractices = this.practiceRepository.All().Count(),
                 BasketballPractices = this.practiceRepository.All().Select(x => x.SportName.ToString() == "Basketball").Count(),
+                FootballPractices = this.practiceRepository.All().Select(x => x.SportName.ToString() == "FootBall").Count(),
             };
 
             return data;

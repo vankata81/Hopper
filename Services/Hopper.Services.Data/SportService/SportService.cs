@@ -5,6 +5,7 @@
 
     using Hopper.Data.Common.Repositories;
     using Hopper.Data.Models;
+    using Hopper.Services.Mapping;
     using Hopper.Web.ViewModels.PracticeListViewModel;
 
     public class SportService : ISportService
@@ -29,21 +30,19 @@
             .ToList().Select(c => new KeyValuePair<string, string>(c.Id.ToString(), c.Name));
         }
 
-        public IEnumerable<PracticeinListViewModel> GetAll(int page, int itemsPerPage = 12)
+        public IEnumerable<T> GetAll<T>(int page, int itemsPerPage)
         {
             var practice = this.practiceRepository.AllAsNoTracking()
                 .OrderByDescending(c => c.Id)
                 .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
-                .Select(x => new PracticeinListViewModel
-                {
-                    SportId = x.Id,
-                    SportName = x.SportName.Name,
-                    Date = x.Date,
-                    Description = x.Description,
-                    Time = x.Time,
-                }).ToList();
+                .To<T>().ToList();
 
             return practice;
+        }
+
+        public int GetCount()
+        {
+            return this.practiceRepository.All().Count();
         }
     }
 }

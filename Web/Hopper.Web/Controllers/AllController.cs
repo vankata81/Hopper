@@ -1,7 +1,12 @@
 ﻿namespace Hopper.Web.Controllers
 {
+    using System.Drawing.Printing;
+
     using Hopper.Data.Common.Repositories;
+    using Hopper.Data.Models;
+
     using Hopper.Services.Data.SportService;
+
     using Hopper.Web.ViewModels.PracticeListViewModel;
     using Microsoft.AspNetCore.Mvc;
 
@@ -16,11 +21,20 @@
 
         public IActionResult AllPractice(int id = 1)
         {
-            var viewmodel = new PracticeListViewModel
+            if (id <= 0)
             {
-                Practices = this.sportService.GetAll(id, 12),
+                return this.NotFound();
+            }
+            const int ItemsPerPage = 6;
+            var viewModel = new PracticeListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                PracticesCount = this.sportService.GetCount(),
+                Practices = this.sportService.GetAll<PracticeinListViewModel>(id, ItemsPerPage),
             };
-            return this.View(viewmodel);
+
+            return this.View(viewModel);
         }
     }
 }

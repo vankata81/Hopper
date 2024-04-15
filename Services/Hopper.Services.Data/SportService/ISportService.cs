@@ -8,6 +8,8 @@
     {
         IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs();
 
-        IEnumerable<PracticeinListViewModel> GetAll(int page, int itemsPerPage = 12);
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+
+        int GetCount();
     }
 }
