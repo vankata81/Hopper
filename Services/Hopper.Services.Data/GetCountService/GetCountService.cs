@@ -20,8 +20,8 @@
             var data = new IndexViewModel
             {
                 AllPractices = this.practiceRepository.All().Count(),
-                BasketballPractices = this.practiceRepository.All().Select(x => x.SportName.ToString() == "Basketball").Count(),
-                FootballPractices = this.practiceRepository.All().Select(x => x.SportName.ToString() == "FootBall").Count(),
+                BasketballPractices = this.practiceRepository.All().Where(x => x.SportName.Name == "Basketball").Count(),
+                FootballPractices = this.practiceRepository.All().Where(x => x.SportName.Name == "FootBall").Count(),
             };
 
             return data;

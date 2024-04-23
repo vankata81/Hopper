@@ -25,7 +25,8 @@
             {
                 return this.NotFound();
             }
-            const int ItemsPerPage = 6;
+
+            const int ItemsPerPage = 3;
             var viewModel = new PracticeListViewModel
             {
                 ItemsPerPage = ItemsPerPage,
