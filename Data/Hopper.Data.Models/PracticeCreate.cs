@@ -9,6 +9,8 @@
     {
         public int SportNameId { get; set; }
 
+        public string Title { get; set; }
+
         public Sports SportName { get; set; }
 
         public string Location { get; set; }

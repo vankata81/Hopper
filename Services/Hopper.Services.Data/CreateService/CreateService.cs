@@ -24,6 +24,7 @@
         {
             var practice = new PracticeCreate
             {
+                Title = viewModel.Title,
                 SportNameId = viewModel.AllSportsId,
                 Location = viewModel.Location,
                 Description = viewModel.Description,

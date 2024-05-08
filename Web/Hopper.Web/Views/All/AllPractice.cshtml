@@ -11,7 +11,7 @@
     {
         <div class="media ">
             <div class="media-body">
-                <h5 class="mt-0">@practice.Description</h5>
+                <h5 class="mt-0"><a asp-action="ById" asp-route-id="@practice.SportNameId">@practice.Title</a></h5>
                 <h5 class="mt-0">@practice.SportName</h5>
                 <p> @practice.Date.Date.ToString("yyyy-MM-dd") @practice.Date.DayOfWeek</p>
                 <p> @practice.Time.TimeOfDay</p>
