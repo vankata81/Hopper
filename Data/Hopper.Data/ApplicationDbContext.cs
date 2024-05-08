@@ -12,7 +12,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser, ApplicationRole, string>(options)
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
             typeof(ApplicationDbContext).GetMethod(
@@ -22,11 +22,6 @@
         public DbSet<PracticeCreate> Practices { get; set; }
 
         public DbSet<Sports> Sports { get; set; }
-
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -64,7 +59,7 @@
             foreach (var deletableEntityType in deletableEntityTypes)
             {
                 var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
-                method.Invoke(null, new object[] { builder });
+                method.Invoke(null, [builder]);
             }
 
             // Disable cascade delete

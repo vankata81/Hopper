@@ -10,14 +10,9 @@
     using Hopper.Web.ViewModels.PracticeListViewModel;
     using Microsoft.AspNetCore.Mvc;
 
-    public class AllController : Controller
+    public class AllController(ISportService sportService) : Controller
     {
-        private readonly ISportService sportService;
-
-        public AllController(ISportService sportService)
-        {
-            this.sportService = sportService;
-        }
+        private readonly ISportService sportService = sportService;
 
         public IActionResult AllPractice(int id = 1)
         {
@@ -36,6 +31,13 @@
             };
 
             return this.View(viewModel);
+        }
+
+        public IActionResult ById(int id)
+        {
+            var practice = this.sportService.GetById<SinglePracticeViewModel>(id);
+
+            return this.View(practice);
         }
     }
 }

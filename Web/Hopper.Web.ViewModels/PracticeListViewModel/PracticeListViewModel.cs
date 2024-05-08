@@ -1,8 +1,8 @@
 ﻿namespace Hopper.Web.ViewModels.PracticeListViewModel
-
 {
     using System;
     using System.Collections.Generic;
+
     using AutoMapper;
     using Hopper.Data.Models;
 

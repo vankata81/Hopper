@@ -8,16 +8,10 @@
     using Hopper.Services.Mapping;
     using Hopper.Web.ViewModels.PracticeListViewModel;
 
-    public class SportService : ISportService
+    public class SportService(IRepository<Sports> sportRepository, IDeletableEntityRepository<PracticeCreate> practiceRepository) : ISportService
     {
-        private readonly IRepository<Sports> sportRepository;
-        private readonly IDeletableEntityRepository<PracticeCreate> practiceRepository;
-
-        public SportService(IRepository<Sports> sportRepository, IDeletableEntityRepository<PracticeCreate> practiceRepository)
-        {
-            this.sportRepository = sportRepository;
-            this.practiceRepository = practiceRepository;
-        }
+        private readonly IRepository<Sports> sportRepository = sportRepository;
+        private readonly IDeletableEntityRepository<PracticeCreate> practiceRepository = practiceRepository;
 
         public IEnumerable<KeyValuePair<string, string>> GetAllAsKeyValuePairs()
         {
@@ -43,6 +37,14 @@
         public int GetCount()
         {
             return this.practiceRepository.All().Count();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var practice = this.practiceRepository.All().Where(x => x.SportNameId == id)
+                .To<T>().FirstOrDefault();
+
+            return practice;
         }
     }
 }
