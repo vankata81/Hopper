@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
 
+    using Hopper.Data.Models;
     using Hopper.Web.ViewModels.PracticeListViewModel;
 
     public interface ISportService

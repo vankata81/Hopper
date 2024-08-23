@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Hopper.Data.Common\Hopper.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\Hopper.Data.Models\Hopper.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\Hopper.Data\Hopper.Data.csproj" />
     <ProjectReference Include="..\..\Web\Hopper.Web.ViewModels\Hopper.Web.ViewModels.csproj" />
     <ProjectReference Include="..\Hopper.Services.Mapping\Hopper.Services.Mapping.csproj" />
   </ItemGroup>

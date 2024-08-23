@@ -17,7 +17,7 @@
 
         public DateTime Time { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         public string Description { get; set; }
 

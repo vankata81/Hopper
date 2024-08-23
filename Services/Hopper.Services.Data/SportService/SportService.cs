@@ -1,12 +1,15 @@
 ﻿namespace Hopper.Services.Data.SportService
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
+    using Hopper.Data;
     using Hopper.Data.Common.Repositories;
     using Hopper.Data.Models;
     using Hopper.Services.Mapping;
     using Hopper.Web.ViewModels.PracticeListViewModel;
+    using Microsoft.EntityFrameworkCore;
 
     public class SportService(IRepository<Sports> sportRepository, IDeletableEntityRepository<PracticeCreate> practiceRepository) : ISportService
     {

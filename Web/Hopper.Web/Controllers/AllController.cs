@@ -29,7 +29,6 @@
                 PracticesCount = this.sportService.GetCount(),
                 Practices = this.sportService.GetAll<PracticeinListViewModel>(id, ItemsPerPage),
             };
-
             return this.View(viewModel);
         }
 

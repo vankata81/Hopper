@@ -28,8 +28,6 @@
                     x => x.SportName,
                     opt =>
                       opt.MapFrom(r => r.SportName.Name));
-
-
             configuration.CreateMap<PracticeCreate, PracticeinListViewModel>()
                 .ForMember(
                  x => x.Title,
